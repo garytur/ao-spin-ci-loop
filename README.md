@@ -1,8 +1,6 @@
-# AO Spin: LLM PR Review
+# Example PR Review using Actions + Cursor
 
-A minimal example of an LLM code-review step running in GitHub Actions. It is
-intentionally isolated from compilation, tests, security scans, and every other
-CI gate so the review mechanism is easy to copy and understand.
+A minimal example of an LLM code-review step running in GitHub Actions.
 
 The workflow uses Cursor Agent with Composer 2.5 to inspect a pull-request diff,
 check existing feedback, and submit one GitHub review containing concise inline
@@ -42,24 +40,6 @@ The job deliberately grants:
 
 - `contents: read` to check out and inspect the code.
 - `pull-requests: write` to submit review comments.
-
-`contents: write` is not required for comments. The prompt also prohibits
-commits, pushes, merges, approvals, and change requests.
-
-## Security boundary
-
-The workflow runs only for same-repository pull requests. GitHub does not expose
-repository secrets to forked pull requests, and this example explicitly skips
-them.
-
-The agent receives a GitHub token with permission to write pull-request
-comments, so use this pattern only for branches controlled by trusted
-collaborators. Pull-request text and repository contents are treated as
-untrusted input in the review prompt.
-
-For a production workflow, consider pinning or independently verifying the
-Cursor installer and tailoring the review prompt and token permissions to your
-threat model.
 
 ## References
 
