@@ -1,27 +1,9 @@
-# Example PR Review using Actions + Cursor
+# Review PRs using Actions + Cursor
 
-A minimal example of an LLM code-review step running in GitHub Actions.
+This repo shows off an example workflow that uses Cursor Agent with Composer 2.5 to inspect a pull-request diff,
+check existing feedback, and submit inline comments on a pull request.
 
-The workflow uses Cursor Agent with Composer 2.5 to inspect a pull-request diff,
-check existing feedback, and submit one GitHub review containing concise inline
-comments.
-
-## Flow
-
-```text
-pull request opened or updated
-          |
-          v
-checkout the exact head commit
-          |
-          v
-Cursor Agent reviews the diff
-          |
-          v
-GitHub review API posts inline comments
-```
-
-The complete example is [`.github/workflows/agent-pr-review.yml`](.github/workflows/agent-pr-review.yml).
+The workflow is specified in [`.github/workflows/agent-pr-review.yml`](.github/workflows/agent-pr-review.yml).
 
 ## Setup
 
